@@ -59,14 +59,14 @@ fi
 
 #Install SSR and SSR-Bash
 cd /usr/local
-git clone https://github.com/shadowsocksr/shadowsocksr.git
+#git clone https://github.com/shadowsocksr/shadowsocksr.git
 #git clone https://github.com/FunctionClub/SSR-Bash-Python.git
 
 # fix
+git clone https://github.com/nakfc/S
 git clone https://github.com/nakfc/S-B-P.git
 mv S-B-P SSR-Bash-Python
-cd /usr/local/shadowsocksr
-bash initcfg.sh
+mv S shadowsocksr
 
 #Install Libsodium
 cd $workdir
