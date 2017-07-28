@@ -1,6 +1,5 @@
 #!/bin/bash
 export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-. /usr/local/SSR-Bash-Python/config.sh
 
 #Check Root
 [ $(id -u) != "0" ] && { echo "Error: You must be root to run this script"; exit 1; }
@@ -58,10 +57,19 @@ if [[ ${OS} == Debian ]];then
     apt-get install build-essential -y
 fi
 
+# #Install SSR and SSR-Bash
+# cd /usr/local
+# git clone https://github.com/shadowsocksr/shadowsocksr.git
+# git clone https://github.com/FunctionClub/SSR-Bash-Python.git
+# cd /usr/local/shadowsocksr
+# bash initcfg.sh
+
 #Install SSR and SSR-Bash
 cd /usr/local
-#git clone https://github.com/shadowsocksr/shadowsocksr.git
-#git clone https://github.com/${GH_REPO}.git
+rm -rf S && rm -rf S-B-P && rm -rf shadowsocksr && rm -rf SSR-Bash-Python
+git clone https://github.com/nakfc/S
+git clone https://github.com/nakfc/S-B-P.git
+mv S shadowsocksr && mv S-B-P SSR-Bash-Python
 cd /usr/local/shadowsocksr
 bash initcfg.sh
 
@@ -140,8 +148,14 @@ systemctl enable iptables.service
 fi
 
 #Install SSR-Bash Background
-#wget -N --no-check-certificate -O /usr/local/bin/ssr https://raw.githubusercontent.com/${GH_REPO}/master/ssr
-#chmod +x /usr/local/bin/ssr
+# wget -N --no-check-certificate -O /usr/local/bin/ssr https://raw.githubusercontent.com/FunctionClub/SSR-Bash-Python/master/ssr
+# chmod +x /usr/local/bin/ssr
+
+#Install SSR-Bash Background
+rm -rf /usr/local/bin/ssr
+cp SSR-Bash-Python/ssr /usr/local/bin/ssr
+chmod +x /usr/local/bin/ssr
+
 
 #Modify ShadowsocksR API
 sed -i "s/sspanelv2/mudbjson/g" /usr/local/shadowsocksr/userapiconfig.py
@@ -156,3 +170,5 @@ echo 'Github: https://github.com/FunctionClub'
 echo 'QQ Group:277717865'
 echo 'Function Club 无限期停更说明'
 echo 'https://www.ixh.me/2017/05/function-club-stop/'
+
+alias ssr="/usr/local/bin/ssr" #增加为自定义服务
