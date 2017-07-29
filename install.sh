@@ -153,7 +153,7 @@ fi
 
 #Install SSR-Bash Background
 rm -rf /usr/local/bin/ssr
-cp SSR-Bash-Python/ssr /usr/local/bin/ssr
+cp /usr/local/SSR-Bash-Python/ssr /usr/local/bin/ssr
 chmod +x /usr/local/bin/ssr
 alias ssr="/usr/local/bin/ssr" #增加为自定义服务
 
