@@ -155,6 +155,7 @@ fi
 rm -rf /usr/local/bin/ssr
 cp SSR-Bash-Python/ssr /usr/local/bin/ssr
 chmod +x /usr/local/bin/ssr
+alias ssr="/usr/local/bin/ssr" #增加为自定义服务
 
 
 #Modify ShadowsocksR API
@@ -171,4 +172,4 @@ echo 'QQ Group:277717865'
 echo 'Function Club 无限期停更说明'
 echo 'https://www.ixh.me/2017/05/function-club-stop/'
 
-alias ssr="/usr/local/bin/ssr" #增加为自定义服务
+
