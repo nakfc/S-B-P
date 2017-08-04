@@ -15,6 +15,9 @@ echo "2.用户管理"
 echo "3.全局流量管理"
 echo "4.实验性功能"
 echo "5.程序自检"
+echo "----------------"
+echo "6.用户流量情况"
+echo "7.用户信息情况"
 while :; do echo
 	read -p "请选择： " choice
 	if [[ ! $choice =~ ^[1-5]$ ]]; then
@@ -42,4 +45,12 @@ fi
 
 if [[ $choice == 5 ]];then
 	bash /usr/local/SSR-Bash-Python/self-check.sh
+fi
+
+if [[ $choice == 6 ]];then
+	python /usr/local/SSR-Bash-Python/show_flow.py
+fi
+
+if [[ $choice == 7 ]];then
+	python /usr/local/SSR-Bash-Python/user/show_all_user_info.py
 fi
